@@ -3718,6 +3718,17 @@
 			status = "disabled";
 		};
 
+		tcsr_mutex: hwlock@1f40000 {
+			compatible = "qcom,tcsr-mutex";
+			reg = <0x0 0x01f40000 0x0 0x20000>;
+			#hwlock-cells = <1>;
+		};
+
+		tcsr: syscon@1f60000 {
+			compatible = "qcom,nord-tcsr", "syscon";
+			reg = <0x0 0x1f60000 0x0 0xa0000>;
+		};
+
 		tsens0: thermal-sensor@c22c000 {
 			compatible = "qcom,nord-tsens", "qcom,tsens-v2";
 			reg = <0x0 0x0c22c000 0x0 0x1ff>,
@@ -4121,6 +4132,18 @@
 				     <GIC_ESPI 319 IRQ_TYPE_LEVEL_HIGH>;
 		};
 
+		tlmm: pinctrl@f000000 {
+			compatible = "qcom,nord-tlmm";
+			reg = <0x0 0x0f000000 0x0 0x1000000>;
+			interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			interrupt-controller;
+			#interrupt-cells = <2>;
+			gpio-ranges = <&tlmm 0 0 181>;
+			wakeup-parent = <&pdc>;
+		};
+
 		intc: interrupt-controller@17000000 {
 			compatible = "arm,gic-v3";
 			reg = <0x0 0x17000000 0x0 0x10000>,     /* GICD */
@@ -4140,6 +4163,16 @@
 				msi-controller;
 				#msi-cells = <1>;
 			};
+		};
+
+		pdc: interrupt-controller@b220000 {
+			compatible = "qcom,sa8797p-pdc", "qcom,pdc";
+			reg = <0x0 0xb220000 0x0 0x10000>;
+			qcom,pdc-ranges = <0 745 43>, <67 543 31>, <98 609 32>,
+					  <130 717 12>, <142 251 5>, <147 796 16>;
+			#interrupt-cells = <2>;
+			interrupt-parent = <&intc>;
+			interrupt-controller;
 		};
 
 		memtimer: timer@17810000 {
@@ -4201,7 +4234,7 @@
 		};
 
 		watchdog@17826000 {
-			compatible = "qcom,nord-wdt","qcom,kpss-wdt";
+			compatible = "qcom,nord-wdt", "qcom,kpss-wdt";
 			reg = <0x0 0x17826000 0x0 0x1000>;
 			clocks = <&sleep_clk>;
 			interrupts = <GIC_ESPI 848 IRQ_TYPE_EDGE_RISING>;
@@ -4209,16 +4242,16 @@
 
 		cpucp_mbox: mailbox@18830000 {
 			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
-			reg =	<0x0 0x18830000 0x0 0x300>,
-				<0x0 0x17620000 0x0 0x4c08>;
+			reg =	<0x0 0x17620000 0x0 0x4c08>,
+				<0x0 0x18830000 0x0 0x300>;
 			#mbox-cells = <1>;
 			interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
 		};
 
 		pdp_mbox0: mailbox@19980000 {
 			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
-			reg = <0x0 0x19980000 0x0 0x300>,
-				<0x0 0x17610000 0x0 0x4c08>;
+			reg = 	<0x0 0x17610000 0x0 0x4c08>,
+				<0x0 0x19980000 0x0 0x300>;
 			#mbox-cells = <1>;
 			interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
 		};
