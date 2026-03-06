@@ -4169,7 +4169,7 @@
 		};
 
 		pdp_mbox0: mailbox@17610000 {
-			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
+			compatible = "qcom,nord-pdp-mbox";
 			reg = <0x0 0x17610000 0x0 0x4c08>,
 			      <0x0 0x19980000 0x0 0x300>;
 			#mbox-cells = <1>;
