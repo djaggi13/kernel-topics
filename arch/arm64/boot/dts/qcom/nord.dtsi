@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Copyright (c) 2026 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
 #include <dt-bindings/interrupt-controller/arm-gic.h>
@@ -315,9 +315,9 @@
 				min-residency-us = <9144>;
 			};
 
-			apss_off: cluster-sleep-1 {
+			domain_ss3: domain-sleep-0 {
 				compatible = "domain-idle-state";
-				arm,psci-suspend-param = <0x0200C353>;
+				arm,psci-suspend-param = <0x0200c353>;
 				entry-latency-us = <2800>;
 				exit-latency-us = <4400>;
 				min-residency-us = <10150>;
@@ -463,7 +463,7 @@
 
 		system_pd: power-domain-system {
 			#power-domain-cells = <0>;
-			domain-idle-states = <&apss_off>;
+			domain-idle-states = <&domain_ss3>;
 		};
 	};
 
@@ -614,7 +614,8 @@
 		};
 
 		pdp_ns_mem: pdp-ns-mem-region@87600000 {
-			reg = <0x0 0x87600000 0x0 0x200000>;
+			reg = <0x0 0x87600000 0x0 0x8000>,
+			      <0x0 0x87609000 0x0 0x1f7000>;
 			no-map;
 		};
 
@@ -826,11 +827,6 @@
 			no-map;
 		};
 
-		scmi_mem: scmi-region@d7600000 {
-			reg = <0x0 0xd7600000 0x0 0x40000>;
-			no-map;
-		};
-
 		firmware_logs_mem: firmware-logs-region@d7640000 {
 			reg = <0x0 0xd7640000 0x0 0x10000>;
 			no-map;
@@ -860,6 +856,7 @@
 	firmware {
 		scm {
 			compatible = "qcom,scm-nord", "qcom,scm";
+			qcom,dload-mode = <&tcsr 0x79000>;
 		};
 	};
 
@@ -3527,7 +3524,6 @@
 		ranges = <0 0 0 0 0x10 0>;
 
 		qupv3_2: geniqup@8c0000 {
-			compatible = "qcom,geni-se-qup";
 			reg = <0x0 0x008c0000 0x0 0x2000>;
 			#address-cells = <2>;
 			#size-cells = <2>;
@@ -3536,14 +3532,12 @@
 			status = "disabled";
 
 			uart15: serial@884000 {
-				compatible = "qcom,geni-debug-uart";
 				reg = <0x0 0x00884000 0x0 0x4000>;
 				interrupts = <GIC_SPI 583 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart17: serial@88c000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x0088c000 0x0 0x4000>;
 				interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
@@ -3551,7 +3545,6 @@
 		};
 
 		qupv3_0: geniqup@9c0000 {
-			compatible = "qcom,geni-se-qup";
 			reg = <0x0 0x009c0000 0x0 0x2000>;
 			#address-cells = <2>;
 			#size-cells = <2>;
@@ -3560,28 +3553,24 @@
 			status = "disabled";
 
 			uart0: serial@980000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00980000 0x0 0x4000>;
 				interrupts = <GIC_SPI 314 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart3: serial@98c000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x0098c000 0x0 0x4000>;
 				interrupts = <GIC_SPI 515 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart4: serial@990000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00990000 0x0 0x4000>;
 				interrupts = <GIC_SPI 516 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart5: serial@994000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00994000 0x0 0x4000>;
 				interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
@@ -3589,7 +3578,6 @@
 		};
 
 		qupv3_1: geniqup@ac0000 {
-			compatible = "qcom,geni-se-qup";
 			reg = <0x0 0x00ac0000 0x0 0x2000>;
 			#address-cells = <2>;
 			#size-cells = <2>;
@@ -3598,21 +3586,18 @@
 			status = "disabled";
 
 			uart9: serial@a88000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00a88000 0x0 0x4000>;
 				interrupts = <GIC_SPI 355 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart10: serial@a8c000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00a8c000 0x0 0x4000>;
 				interrupts = <GIC_SPI 356 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
 			};
 
 			uart12: serial@a94000 {
-				compatible = "qcom,geni-uart";
 				reg = <0x0 0x00a94000 0x0 0x4000>;
 				interrupts = <GIC_SPI 358 IRQ_TYPE_LEVEL_HIGH>;
 				status = "disabled";
@@ -3625,9 +3610,6 @@
 		};
 
 		ufshc_mem_hc: ufshc@1d44000 {
-			compatible = "qcom,nord-ufshc",
-				     "qcom,ufshc",
-				     "jedec,ufs-2.0";
 			reg = <0x0 0x01d44000 0x0 0x3000>;
 			interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
 			lanes-per-direction = <1>;
@@ -3639,6 +3621,11 @@
 			compatible = "qcom,tcsr-mutex";
 			reg = <0x0 0x01f40000 0x0 0x20000>;
 			#hwlock-cells = <1>;
+		};
+
+		tcsr: syscon@1f60000 {
+			compatible = "qcom,nord-tcsr", "syscon";
+			reg = <0x0 0x01f60000 0x0 0xa0000>;
 		};
 
 		adreno_smmu_0: iommu@3da0000 {
@@ -3718,15 +3705,15 @@
 			status = "disabled";
 		};
 
-		tcsr_mutex: hwlock@1f40000 {
-			compatible = "qcom,tcsr-mutex";
-			reg = <0x0 0x01f40000 0x0 0x20000>;
-			#hwlock-cells = <1>;
-		};
-
-		tcsr: syscon@1f60000 {
-			compatible = "qcom,nord-tcsr", "syscon";
-			reg = <0x0 0x1f60000 0x0 0xa0000>;
+		pdc: interrupt-controller@b220000 {
+			compatible = "qcom,nord-pdc", "qcom,pdc";
+			reg = <0x0 0x0b220000 0x0 0x10000>;
+			qcom,pdc-ranges = <0 745 43>, <67 543 31>,
+					 <98 609 32>, <130 717 12>,
+					 <142 251 5>, <147 796 16>;
+			#interrupt-cells = <2>;
+			interrupt-parent = <&intc>;
+			interrupt-controller;
 		};
 
 		tsens0: thermal-sensor@c22c000 {
@@ -3815,6 +3802,34 @@
 			#qcom,sensors = <16>;
 			interrupt-names = "uplow", "critical";
 			#thermal-sensor-cells = <1>;
+		};
+
+		tlmm: pinctrl@f100000 {
+			compatible = "qcom,nord-tlmm";
+			reg = <0x0 0x0f100000 0x0 0xc0000>;
+			interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			interrupt-controller;
+			#interrupt-cells = <2>;
+			gpio-ranges = <&tlmm 0 0 181>;
+			wakeup-parent = <&pdc>;
+
+			qup_uart15_default: qup-uart15-default-state {
+				qup_uart15_tx: qup-uart15-tx-pins {
+					pins = "gpio147";
+					function = "qup2_se2_l2";
+					drive-strength = <2>;
+					bias-disable;
+				};
+
+				qup_uart15_rx: qup-uart15-rx-pins {
+					pins = "gpio148";
+					function = "qup2_se2_l3";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
 		};
 
 		apps_smmu_0: iommu@15a00000 {
@@ -4132,18 +4147,6 @@
 				     <GIC_ESPI 319 IRQ_TYPE_LEVEL_HIGH>;
 		};
 
-		tlmm: pinctrl@f000000 {
-			compatible = "qcom,nord-tlmm";
-			reg = <0x0 0x0f000000 0x0 0x1000000>;
-			interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
-			gpio-controller;
-			#gpio-cells = <2>;
-			interrupt-controller;
-			#interrupt-cells = <2>;
-			gpio-ranges = <&tlmm 0 0 181>;
-			wakeup-parent = <&pdc>;
-		};
-
 		intc: interrupt-controller@17000000 {
 			compatible = "arm,gic-v3";
 			reg = <0x0 0x17000000 0x0 0x10000>,     /* GICD */
@@ -4165,14 +4168,20 @@
 			};
 		};
 
-		pdc: interrupt-controller@b220000 {
-			compatible = "qcom,sa8797p-pdc", "qcom,pdc";
-			reg = <0x0 0xb220000 0x0 0x10000>;
-			qcom,pdc-ranges = <0 745 43>, <67 543 31>, <98 609 32>,
-					  <130 717 12>, <142 251 5>, <147 796 16>;
-			#interrupt-cells = <2>;
-			interrupt-parent = <&intc>;
-			interrupt-controller;
+		pdp_mbox0: mailbox@17610000 {
+			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
+			reg = <0x0 0x17610000 0x0 0x4c08>,
+			      <0x0 0x19980000 0x0 0x300>;
+			#mbox-cells = <1>;
+			interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+		};
+
+		cpucp_mbox: mailbox@17620000 {
+			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
+			reg = <0x0 0x17620000 0x0 0x4c08>,
+			      <0x0 0x18830000 0x0 0x300>;
+			#mbox-cells = <1>;
+			interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
 		};
 
 		memtimer: timer@17810000 {
@@ -4234,26 +4243,10 @@
 		};
 
 		watchdog@17826000 {
-			compatible = "qcom,nord-wdt", "qcom,kpss-wdt";
+			compatible = "qcom,apss-wdt-nord", "qcom,kpss-wdt";
 			reg = <0x0 0x17826000 0x0 0x1000>;
 			clocks = <&sleep_clk>;
 			interrupts = <GIC_ESPI 848 IRQ_TYPE_EDGE_RISING>;
-		};
-
-		cpucp_mbox: mailbox@18830000 {
-			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
-			reg =	<0x0 0x17620000 0x0 0x4c08>,
-				<0x0 0x18830000 0x0 0x300>;
-			#mbox-cells = <1>;
-			interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-		};
-
-		pdp_mbox0: mailbox@19980000 {
-			compatible = "qcom,nord-cpucp-mbox", "qcom,x1e80100-cpucp-mbox";
-			reg = 	<0x0 0x17610000 0x0 0x4c08>,
-				<0x0 0x19980000 0x0 0x300>;
-			#mbox-cells = <1>;
-			interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
 		};
 	};
 };

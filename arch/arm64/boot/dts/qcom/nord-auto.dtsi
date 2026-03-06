@@ -83,11 +83,7 @@
 	};
 
 	firmware {
-		scm {
-			qcom,dload-mode = <&tcsr 0x79000>;
-		};
-
-                pdp_scmi: scmi-64 {
+		pdp_scmi: scmi-64 {
 			compatible = "arm,scmi";
 			mboxes = <&pdp_mbox0 0>, <&pdp_mbox0 11>, <&pdp_mbox0 1>;
 			mbox-names = "tx", "tx_reply", "rx";
@@ -102,12 +98,21 @@
 				reg = <0x13>;
 				#clock-cells = <1>;
 			};
-
 		};
 	};
 
-	reserved-memory{
-		/delete-node/ scmi-region@d7600000;
+	reserved-memory {
+		pdp0_p2a: scmi-shmem@87608000 {
+			compatible = "arm,scmi-shmem";
+			reg = <0x0 0x87608000 0x0 0x80>;
+			no-map;
+		};
+
+		pdp0_a2p: scmi-shmem@87060180 {
+			compatible = "arm,scmi-shmem";
+			reg = <0x0 0x87608180 0x0 0x80>;
+			no-map;
+		};
 
 		shmem0: scmi-shmem@d7600000 {
 			compatible = "arm,scmi-shmem";
@@ -492,24 +497,7 @@
 			reg = <0x0 0xd763f000 0x0 0x1000>;
 			no-map;
 		};
-
-		pdp0_p2a: scmi-shmem@87608000 {
-			compatible = "arm,scmi-shmem";
-			reg = <0x0 0x87608000 0x0 0x80>;
-			no-map;
-		};
-
-		pdp0_a2p: scmi-shmem@87060180 {
-			compatible = "arm,scmi-shmem";
-			reg = <0x0 0x87608180 0x0 0x80>;
-			no-map;
-		};
 	};
-};
-
-&pdp_ns_mem {
-    reg = <0x0 0x87600000 0x0 0x8000>,
-          <0x0 0x87609000 0x0 0x1F7000>;
 };
 
 &soc {
