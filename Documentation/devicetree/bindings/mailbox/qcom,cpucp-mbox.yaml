@@ -21,6 +21,7 @@ properties:
               - qcom,glymur-cpucp-mbox
               - qcom,kaanapali-cpucp-mbox
               - qcom,nord-cpucp-mbox
+              - qcom,nord-pdp-mbox
               - qcom,sm8750-cpucp-mbox
           - const: qcom,x1e80100-cpucp-mbox
       - enum:
@@ -30,6 +31,11 @@ properties:
     items:
       - description: CPUCP rx register region
       - description: CPUCP tx register region
+
+  reg-names:
+    items:
+      - const: rx
+      - const: tx
 
   interrupts:
     maxItems: 1
@@ -52,6 +58,7 @@ examples:
     mailbox@17430000 {
         compatible = "qcom,x1e80100-cpucp-mbox";
         reg = <0x17430000 0x10000>, <0x18830000 0x10000>;
+        reg-names = "rx", "tx";
         interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH>;
         #mbox-cells = <1>;
     };
