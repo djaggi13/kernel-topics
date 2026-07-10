@@ -10,6 +10,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem0>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 963 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -40,6 +41,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem1>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 964 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -70,6 +72,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem2>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 965 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -100,6 +103,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem3>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 966 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -130,6 +134,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem4>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 967 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -160,6 +165,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem5>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 968 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -190,6 +196,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem6>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 969 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -220,6 +227,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem7>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 970 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -250,6 +258,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem8>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 971 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -280,6 +289,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem9>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 972 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -310,6 +320,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem10>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 973 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -340,6 +351,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem11>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 974 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -370,6 +382,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem12>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 975 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -400,6 +413,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem13>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 976 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -430,6 +444,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem14>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 977 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -460,6 +475,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem15>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 978 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -490,6 +506,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem16>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 979 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -520,6 +537,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem17>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 980 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -550,6 +568,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem18>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 981 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -580,6 +599,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem19>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 982 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -610,6 +630,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem20>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 983 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -640,6 +661,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem21>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 984 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -670,6 +692,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem22>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 985 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -700,6 +723,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem23>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 986 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -720,6 +744,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem24>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_SPI 987 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -750,6 +775,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem25>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 0 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -780,6 +806,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem26>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 1 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -810,6 +837,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem27>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 2 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -840,6 +868,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem28>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 3 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -870,6 +899,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem29>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 4 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -900,6 +930,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem30>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 5 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -930,6 +961,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem31>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 6 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -960,6 +992,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem32>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 7 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -990,6 +1023,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem33>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 8 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1020,6 +1054,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem34>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 9 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1050,6 +1085,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem35>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 10 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1080,6 +1116,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem36>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 11 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1110,6 +1147,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem37>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 12 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1140,6 +1178,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem38>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 13 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1170,6 +1209,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem39>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 14 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1200,6 +1240,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem40>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 15 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1230,6 +1271,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem41>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 16 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1260,6 +1302,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem42>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 17 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1290,6 +1333,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem43>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 18 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1320,6 +1364,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem44>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 19 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1350,6 +1395,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem45>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 20 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1380,6 +1426,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem46>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 21 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1410,6 +1457,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem47>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 22 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1440,6 +1488,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem48>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 23 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1470,6 +1519,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem49>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 24 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1500,6 +1550,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem50>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 25 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1530,6 +1581,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem51>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 26 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1560,6 +1612,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem52>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 27 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1590,6 +1643,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem53>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 28 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1620,6 +1674,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem54>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 29 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1650,6 +1705,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem55>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 30 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1680,6 +1736,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem56>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 31 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1710,6 +1767,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem57>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 32 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1740,6 +1798,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem58>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 33 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1770,6 +1829,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem59>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 34 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1800,6 +1860,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem60>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 35 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1830,6 +1891,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem61>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 36 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1860,6 +1922,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem62>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 37 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
@@ -1890,6 +1953,7 @@
 		compatible = "qcom,scmi-smc";
 		arm,smc-id = <0xc6008012>;
 		shmem = <&shmem63>;
+		/* We expect the bootloader to update the IRQ number */
 		interrupts = <GIC_ESPI 38 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "a2p";
 		#address-cells = <1>;
