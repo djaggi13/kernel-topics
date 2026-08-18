@@ -1715,6 +1715,8 @@ static const struct msm_gpio_wakeirq_map nord_pdc_map[] = {
 	{ 160, 110 }, { 161, 79 },  { 166, 109 }, { 168, 111 },
 };
 
+static const unsigned int nord_wakeirq_present_errata[] = { 2, 5, 8, 11 };
+
 static const struct msm_pinctrl_soc_data nord_tlmm = {
 	.pins = nord_pins,
 	.npins = ARRAY_SIZE(nord_pins),
@@ -1725,6 +1727,8 @@ static const struct msm_pinctrl_soc_data nord_tlmm = {
 	.ngpios = 182,
 	.wakeirq_map = nord_pdc_map,
 	.nwakeirq_map = ARRAY_SIZE(nord_pdc_map),
+	.wakeirq_present_errata = nord_wakeirq_present_errata,
+	.nwakeirq_present_errata = ARRAY_SIZE(nord_wakeirq_present_errata),
 	.egpio_func = 11,
 };
 

@@ -153,6 +153,9 @@ struct msm_gpio_wakeirq_map {
  * @wakeirq_dual_edge_errata: If true then GPIOs using the wakeirq_map need
  *                            to be aware that their parent can't handle dual
  *                            edge interrupts.
+ * @wakeirq_present_errata: List of GPIOs whose wakeup present bit reads 0 due
+ *                          to a hardware errata but are wakeup capable.
+ * @nwakeirq_present_errata: The number of entries in @wakeirq_present_errata
  * @gpio_func: Which function number is GPIO (usually 0).
  * @egpio_func: If non-zero then this SoC supports eGPIO. Even though in
  *              hardware this is a mux 1-level above the TLMM, we'll treat
@@ -177,6 +180,8 @@ struct msm_pinctrl_soc_data {
 	const struct msm_gpio_wakeirq_map *wakeirq_map;
 	unsigned int nwakeirq_map;
 	bool wakeirq_dual_edge_errata;
+	const unsigned int *wakeirq_present_errata;
+	unsigned int nwakeirq_present_errata;
 	unsigned int gpio_func;
 	unsigned int egpio_func;
 };

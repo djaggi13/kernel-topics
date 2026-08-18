@@ -76,6 +76,7 @@ struct msm_pinctrl {
 	DECLARE_BITMAP(skip_wake_irqs, MAX_NR_GPIO);
 	DECLARE_BITMAP(disabled_for_mux, MAX_NR_GPIO);
 	DECLARE_BITMAP(ever_gpio, MAX_NR_GPIO);
+	DECLARE_BITMAP(wakeirq_present_errata, MAX_NR_GPIO);
 
 	const struct msm_pinctrl_soc_data *soc;
 	void __iomem *regs[MAX_NR_TILES];
@@ -1026,6 +1027,14 @@ static bool msm_gpio_needs_dual_edge_parent_workaround(struct irq_data *d,
 	       test_bit(d->hwirq, pctrl->skip_wake_irqs);
 }
 
+static bool msm_gpio_needs_wakeup_present_workaround(struct irq_data *d)
+{
+	struct gpio_chip *gc = irq_data_get_irq_chip_data(d);
+	struct msm_pinctrl *pctrl = gpiochip_get_data(gc);
+
+	return test_bit(d->hwirq, pctrl->wakeirq_present_errata);
+}
+
 static void msm_gpio_irq_init_valid_mask(struct gpio_chip *gc,
 					 unsigned long *valid_mask,
 					 unsigned int ngpios)
@@ -1248,7 +1257,8 @@ static int msm_gpio_irq_reqres(struct irq_data *d)
 		raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 		intr_cfg = msm_readl_intr_cfg(pctrl, g);
-		if (intr_cfg & BIT(g->intr_wakeup_present_bit)) {
+		if ((intr_cfg & BIT(g->intr_wakeup_present_bit)) ||
+		    msm_gpio_needs_wakeup_present_workaround(d)) {
 			intr_cfg |= BIT(g->intr_wakeup_enable_bit);
 			msm_writel_intr_cfg(intr_cfg, pctrl, g);
 		}
@@ -1276,7 +1286,8 @@ static void msm_gpio_irq_relres(struct irq_data *d)
 		raw_spin_lock_irqsave(&pctrl->lock, flags);
 
 		intr_cfg = msm_readl_intr_cfg(pctrl, g);
-		if (intr_cfg & BIT(g->intr_wakeup_present_bit)) {
+		if ((intr_cfg & BIT(g->intr_wakeup_present_bit)) ||
+		    msm_gpio_needs_wakeup_present_workaround(d)) {
 			intr_cfg &= ~BIT(g->intr_wakeup_enable_bit);
 			msm_writel_intr_cfg(intr_cfg, pctrl, g);
 		}
@@ -1433,6 +1444,11 @@ static int msm_gpio_init(struct msm_pinctrl *pctrl)
 			gpio = pctrl->soc->wakeirq_map[i].gpio;
 			set_bit(gpio, pctrl->skip_wake_irqs);
 		}
+	}
+
+	for (i = 0; i < pctrl->soc->nwakeirq_present_errata; i++) {
+		set_bit(pctrl->soc->wakeirq_present_errata[i],
+			pctrl->wakeirq_present_errata);
 	}
 
 	girq = &chip->irq;
