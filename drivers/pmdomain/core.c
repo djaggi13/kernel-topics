@@ -3685,8 +3685,10 @@ void of_genpd_sync_state(struct device_node *np)
 {
 	struct generic_pm_domain *genpd;
 
-	if (!np)
+
+	if (!np || pd_ignore_unused) {
 		return;
+	}
 
 	mutex_lock(&gpd_list_lock);
 	list_for_each_entry(genpd, &gpd_list, gpd_list_node) {
@@ -3719,6 +3721,9 @@ static void genpd_provider_sync_state(struct device *dev)
 		break;
 
 	case GENPD_SYNC_STATE_SIMPLE:
+		if (pd_ignore_unused) {
+			break;
+		}
 		genpd_lock(genpd);
 		genpd->stay_on = false;
 		genpd_power_off(genpd, false, 0);
